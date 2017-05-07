@@ -1,4 +1,4 @@
-FROM maxpatternman/alpine-base
+FROM alpine:3.5
 MAINTAINER Max <maor@outlook.de>
 
 # install youtube-dl
@@ -15,4 +15,4 @@ ENV DEBUG=false
 # import script
 COPY yt-dl.sh /yt-dl.sh
 
-CMD ["/bin/bash","yt-dl.sh"]
+CMD ["/bin/sh","yt-dl.sh"]
