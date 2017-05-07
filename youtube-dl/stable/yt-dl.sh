@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/ash
 set -e
 
 # if URL var wasn't changed
