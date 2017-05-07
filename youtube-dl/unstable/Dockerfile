@@ -1,8 +1,9 @@
-FROM maxpatternman/alpine-base
+FROM alpine:3.5
 MAINTAINER Max <maor@outlook.de>
 
 # install youtube-dl
-RUN apk add --no-cache youtube-dl
+RUN apk add --no-cache youtube-dl \
+    curl
 
 # add dir target
 RUN mkdir /target
@@ -15,4 +16,4 @@ ENV DEBUG=false
 # import script
 COPY yt-dl.sh /yt-dl.sh
 
-CMD ["/bin/bash","yt-dl.sh"]
+CMD ["/bin/ash","yt-dl.sh"]
