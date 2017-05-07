@@ -3,15 +3,15 @@ MAINTAINER Max <maor@outlook.de>
 
 # install youtube-dl
 RUN apk add --no-cache youtube-dl \
-    curl
-
-# add dir target
-RUN mkdir /target
+    curl \
+    
+    # add target directory
+    && mkdir /target
 
 # enter URL in ENV
-ENV URL=none
-ENV OUTPUT=mp3
-ENV DEBUG=false
+ENV URL=none \
+    OUTPUT=mp3 \
+    DEBUG=false
 
 # import script
 COPY yt-dl.sh /yt-dl.sh
