@@ -10,9 +10,15 @@
 
 #### Usage:
 
+    docker run --rm -ti maxpatternman/pwgen
+
+or
+
     docker run --rm -ti -e OPTIONS="-s -N 1 16" maxpatternman/pwgen
 
-#### Need help for Options? Run:
+
+
+##### Need help? Run:
 
     docker run --rm -ti -e OPTIONS="--help" maxpatternman/pwgen
 

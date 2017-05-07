@@ -6,4 +6,4 @@ RUN apk add --no-cache pwgen
 
 ENV OPTIONS="-s -N 1 16"
 
-CMD ["/bin/ash","-c","pwgen","$OPTIONS"]
+CMD ["sh","-c","/usr/bin/pwgen $OPTIONS"]
