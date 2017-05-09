@@ -5,6 +5,8 @@
 #### Usage:
 
 Please use the prepared config file from:
+https://github.com/maxpatternman/docks/blob/master/rtorrent/stable/rtorrent.rc
+
 
     docker run \
         --rm -d -ti --read-only \
@@ -21,6 +23,9 @@ Detach rtorrent with [STRG+P] + [STRG+Q]
 Attach with:
 
     docker container attach rtorrent
+
+##### Oneliner
+`docker run --rm -d -ti --read-only --name rtorrent -u $UID:$EUID -v /path/to/config-data.rc:/config:ro -v /path/to/download:/data -v /path/to/cache:/session -v /path/to/torrent-files:/tor -p 12345:6890 maxpatternman/rtorrent`
 
 
 #### Examples:

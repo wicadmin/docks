@@ -21,6 +21,9 @@ I added some presets for more comfort.
         -e OUTPUT=mp3 \
         -e DEBUG=false \
         maxpatternman/youtube-dl
+
+##### Oneliner
+`docker run --rm -d --read-only -u $UID:$EUID -v /home/xyz:/target -e URL=url -e OUTPUT=mp3 -e DEBUG=false maxpatternman/youtube-dl`
         
 #### Explanation:
 
