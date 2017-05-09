@@ -1,5 +1,4 @@
 FROM alpine:3.5
-MAINTAINER Max <maor@outlook.de>
 
 # install youtube-dl
 RUN apk add --no-cache youtube-dl \
