@@ -15,4 +15,6 @@ ENV URL=none \
 # import script
 COPY yt-dl.sh /yt-dl.sh
 
+VOLUME /target
+
 CMD ["/bin/ash","yt-dl.sh"]
