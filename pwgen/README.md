@@ -1,19 +1,12 @@
-#### Description
+### Description
 
 **Password generator** in a docker-container based on the lightweight Alpine Linux.
 
-#### Environment:
-
-| Environment | Default value |
-|-------------|---------------|
-| OPTIONS     | -s -N 1 16    |
-
-#### Usage:
+### Usage
 
     docker run --rm -ti maxpatternman/pwgen
-    docker run --rm -ti -e OPTIONS="-s -N 1 16" maxpatternman/pwgen
 
-##### Need help? Run:
+### Example
 
-    docker run --rm -ti -e OPTIONS="--help" maxpatternman/pwgen
+    docker run --rm -ti maxpatternman/pwgen -s -N 1 16
 
