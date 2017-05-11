@@ -14,6 +14,9 @@ else
   DEBUG="-q"
 fi
 
+# case insensitive
+OUTPUT=$(echo $OUTPUT | tr '[:upper:]' '[:lower:]')
+
 # initial var OPTION
 OPTION=""
 
@@ -22,19 +25,19 @@ case "$OUTPUT" in
         mp3)
             OPTION="--extract-audio --audio-format mp3"
             ;;
-        mp3HQ)
+        mp3hq)
             OPTION="--extract-audio --audio-quality 0 --audio-format mp3"
             ;;
         wav)
             OPTION="--extract-audio --audio-format wav"
             ;;
-        wavHQ)
+        wavhq)
             OPTION="--extract-audio --audio-quality 0 --audio-format wav"
             ;;
         mp4)
             OPTION="-f mp4"
             ;;
-        mp4HQ)
+        mp4hq)
             OPTION="-f bestvideo[ext=mp4]+bestaudio[ext=m4a]"
             ;;
         bestaudio)
