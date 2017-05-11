@@ -43,7 +43,14 @@ case "$OUTPUT" in
         bestaudio)
             OPTION="-f bestaudio"
             ;;
-            
+
+        install)
+	    cd /target
+            cp -f /youtube-dl-docker ./
+	    chmod 711 youtube-dl-docker
+	    echo "Installation complete."
+            exit 0
+            ;;
         *)
             OPTION="$OUTPUT"
             ;;
