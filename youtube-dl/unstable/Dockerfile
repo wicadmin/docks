@@ -17,4 +17,6 @@ COPY yt-dl.sh /yt-dl.sh
 
 VOLUME /target
 
+LABEL maintainer="maor@outlook.de"
+
 CMD ["/bin/ash","yt-dl.sh"]
