@@ -1,0 +1,46 @@
+#!/bin/bash
+set -e
+
+# Init
+showmodes="\n1) mp3 \n2) mp3HQ\n3) wav\n4) wavHQ\n5) mp4\n6) mp4HQ\n7) bestaudio\n"
+
+
+# want two arguments to run
+if [ -n "$1" ] && [ -n "$2" ]; then
+	echo "URL=$1"
+	echo "MODE=$2"
+	url=$1
+	mode=$2
+else
+	read -p "Please pase URL: " url
+	echo -e $showmodes
+	read -p "Mode number: " mode
+fi
+
+# case insensitive
+mode="$(echo $mode | tr '[:upper:]' '[:lower:]')"
+
+# set mode
+if [ "$mode" = "1" ] || [ "$mode" = "mp3" ]; then
+	output=mp3
+elif [ "$mode" = "2" ] || [ "$mode" = "mp3hq" ]; then
+	output=mp3hq
+elif [ "$mode" = "3" ] || [ "$mode" = "wav" ]; then
+        output=wav
+elif [ "$mode" = "4" ] || [ "$mode" = "wavhq" ]; then
+        output=wavhq
+elif [ "$mode" = "5" ] || [ "$mode" = "mp4" ]; then
+        output=mp4
+elif [ "$mode" = "6" ] || [ "$mode" = "mp4hq" ]; then
+        output=mp4hq
+elif [ "$mode" = "7" ] || [ "$mode" = "bestaudio" ]; then
+        output=bestaudio
+else
+	echo "Invalid input"
+	exit 1
+fi
+
+# execute yt-docker
+docker run --rm -d --read-only -u $UID:$EUID -v $HOME:/target -e URL="$url" -e OUTPUT="$output" maxpatternman/youtube-dl:unstable
+
+exit 0
