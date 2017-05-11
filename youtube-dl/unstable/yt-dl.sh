@@ -15,7 +15,7 @@ else
 fi
 
 # case insensitive
-OUTPUT=$(echo $OUTPUT | tr '[:upper:]' '[:lower:]')
+OUTPUT="$(echo $OUTPUT | tr '[:upper:]' '[:lower:]')"
 
 # initial var OPTION
 OPTION=""
