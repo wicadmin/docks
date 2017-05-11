@@ -14,6 +14,7 @@ ENV URL=none \
 
 # import script
 COPY yt-dl.sh /yt-dl.sh
+COPY youtube-dl-docker /youtube-dl-docker
 
 VOLUME /target
 
