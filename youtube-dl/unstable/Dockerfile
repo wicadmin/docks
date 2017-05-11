@@ -3,6 +3,7 @@ FROM alpine:3.5
 # install youtube-dl
 RUN apk add --no-cache youtube-dl \
     ca-certificates \
+    curl \
     
     # add target directory
     && mkdir /target
