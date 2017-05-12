@@ -10,7 +10,9 @@ RUN apk add --no-cache youtube-dl \
 # enter URL in ENV
 ENV URL=none \
     OUTPUT=mp3 \
-    DEBUG=false
+    DEBUG=false \
+    UID="" \
+    GID=""
 
 # import script
 COPY yt-dl.sh /yt-dl.sh

@@ -45,10 +45,18 @@ case "$OUTPUT" in
             ;;
 
         install)
-	    cd /target
+	        cd /target
             cp -f /youtube-dl-docker ./
-	    chmod 711 youtube-dl-docker
-	    echo "Installation complete."
+	        chmod 711 youtube-dl-docker
+            # check UID & GID env
+            if [ -n "$UID" ] && [ -n "$GID" ]; then
+                chown $UID:$GID youtube-dl-docker
+                echo "Changed owner to $UID:$GID"
+            elif [ -n "$UID" ]; then
+                chown $UID:$UID youtube-dl-docker
+                echo "Changed owner to $UID:$UID"
+            fi
+	        echo "Installation complete."
             exit 0
             ;;
         *)

@@ -1,8 +1,16 @@
 #!/bin/bash
 set -e
 
+#####CONFIG#####
+branch="unstable"
+
+# change your destination folder here
+dlDIR="$HOME"
+
+################
+
 # Init
-showmodes="\n1) mp3 \n2) mp3HQ\n3) wav\n4) wavHQ\n5) mp4\n6) mp4HQ\n7) bestaudio\n"
+showmodes="\n1) mp3 \n2) mp3HQ\n3) wav\n4) wavHQ\n5) mp4\n6) mp4HQ\n7) bestaudio\n\n9) costum\n"
 
 
 # want two arguments to run
@@ -35,12 +43,14 @@ elif [ "$mode" = "6" ] || [ "$mode" = "mp4hq" ]; then
         output=mp4hq
 elif [ "$mode" = "7" ] || [ "$mode" = "bestaudio" ]; then
         output=bestaudio
+elif [ "$mode" = "9" ] || [ "$mode" = "costum" ]; then
+        read -p "Please type your Option: " output
 else
 	echo "Invalid input"
 	exit 1
 fi
 
 # execute yt-docker
-docker run --rm -d --read-only -u $UID:$EUID -v $HOME:/target -e URL="$url" -e OUTPUT="$output" maxpatternman/youtube-dl:unstable
+docker run --rm -d --read-only -u $UID:$EUID -v $dlDIR:/target -e URL="$url" -e OUTPUT="$output" maxpatternman/youtube-dl:$branch
 
 exit 0
