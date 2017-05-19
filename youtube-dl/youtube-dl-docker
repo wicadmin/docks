@@ -17,6 +17,7 @@ G_ID=$EUID
 # aditional settings
 NO_CACHE=true
 SHORT_TITLE=true
+READ_ONLY=true
 #######################################
 
 # Init
@@ -29,6 +30,13 @@ if $DEBUG; then
 else
   DEBUG="-q"
   INTERACTIVE="-d"
+fi
+
+# read-only
+if $READ_ONLY; then
+  READ_ONLY="--read-only"
+else
+  READ_ONLY=""
 fi
 
 # want two arguments to run
@@ -84,6 +92,6 @@ if $NO_CACHE; then
 fi
 
 # execute yt-docker
-echo "docker run --rm $INTERACTIVE --read-only -u $U_ID:$G_ID -v $DL_DIR:/target maxpatternman/youtube-dl:$branch $DEBUG $OPTION $url"
+docker run --rm $INTERACTIVE $READ_ONLY -u $U_ID:$G_ID -v $DL_DIR:/target maxpatternman/youtube-dl:$branch $DEBUG $OPTION $url
 
 exit 0
