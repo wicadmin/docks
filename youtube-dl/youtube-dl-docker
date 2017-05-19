@@ -2,7 +2,7 @@
 set -e
 
 #####CONFIG############################
-branch="unstable"
+branch="latest"
 
 # change your destination folder here
 DL_DIR=$HOME
