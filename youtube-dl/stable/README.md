@@ -1,7 +1,6 @@
 #### Description
 
 **Youtube-dl** in a docker-container based on the lightweight Alpine Linux.
-I added some presets for more comfort.
 
 #### Usage:
 
@@ -15,6 +14,12 @@ I added some presets for more comfort.
 `docker run --rm -d --read-only -u $UID:$EUID -v /home/xyz:/target maxpatternman/youtube-dl`
 
 Please visit https://github.com/rg3/youtube-dl/blob/master/README.md#options for more details about all options.
+
+#### Startscript
+
+Feel free to use my startscript.
+It requires bash to run.
+https://github.com/maxpatternman/docks/blob/master/youtube-dl/youtube-dl-docker
 
 #### Examples:
 
