@@ -17,8 +17,8 @@ Please visit https://github.com/rg3/youtube-dl/blob/master/README.md#options for
 
 #### Startscript
 
-Feel free to use my startscript.
-It requires bash to run.
+Feel free to use my startscript. \
+It requires bash to run. \
 https://github.com/maxpatternman/docks/blob/master/youtube-dl/youtube-dl-docker
 
 #### Examples:
