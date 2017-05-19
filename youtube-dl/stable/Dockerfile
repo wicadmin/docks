@@ -1,18 +1,24 @@
 FROM alpine:3.5
 
-# install youtube-dl
-RUN apk add --no-cache youtube-dl \
-    curl \
+# install dependencies
+RUN apk add --no-cache ca-certificates \
+    wget \
+    python \
+    ffmpeg \
+    rtmpdump \
     
     # add target directory
-    && mkdir /target
+    && mkdir /target \
 
-# enter URL in ENV
-ENV URL=none \
-    OUTPUT=mp3 \
-    DEBUG=false
+    # download youtube-dl
+    && wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl \
+    && chmod a+rx /usr/local/bin/youtube-dl
 
-# import script
-COPY yt-dl.sh /yt-dl.sh
+WORKDIR /target
+VOLUME /target
+LABEL maintainer="maor@outlook.de"
 
-CMD ["/bin/ash","yt-dl.sh"]
+ENTRYPOINT ["/usr/local/bin/youtube-dl"]
+CMD ["--help"]
+
+
