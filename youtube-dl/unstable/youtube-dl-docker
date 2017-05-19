@@ -1,17 +1,35 @@
 #!/bin/bash
 set -e
 
-#####CONFIG#####
+#####CONFIG############################
 branch="unstable"
 
 # change your destination folder here
-dlDIR="$HOME"
+DL_DIR=$HOME
 
-################
+DEBUG=false
+
+# set the ID-number not the name
+# look in /etc/passwd if you aren't sure
+U_ID=$UID
+G_ID=$EUID
+
+# aditional settings
+NO_CACHE=true
+SHORT_TITLE=true
+#######################################
 
 # Init
 showmodes="\n1) mp3 \n2) mp3HQ\n3) wav\n4) wavHQ\n5) mp4\n6) mp4HQ\n7) bestaudio\n\n9) costum\n"
 
+# verbose for debugging
+if $DEBUG; then
+  DEBUG="-v"
+  INTERACTIVE="-ti"
+else
+  DEBUG="-q"
+  INTERACTIVE="-d"
+fi
 
 # want two arguments to run
 if [ -n "$1" ] && [ -n "$2" ]; then
@@ -19,6 +37,11 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 	echo "MODE=$2"
 	url=$1
 	mode=$2
+elif [ -n "$1" ]; then
+	echo "URL=$1"
+	url=$1
+	echo -e $showmodes
+	read -p "Mode number: " mode
 else
 	read -p "Please pase URL: " url
 	echo -e $showmodes
@@ -30,27 +53,37 @@ mode="$(echo $mode | tr '[:upper:]' '[:lower:]')"
 
 # set mode
 if [ "$mode" = "1" ] || [ "$mode" = "mp3" ]; then
-	output=mp3
+	OPTION="--extract-audio --audio-format mp3"
 elif [ "$mode" = "2" ] || [ "$mode" = "mp3hq" ]; then
-	output=mp3hq
+	OPTION="--extract-audio --audio-quality 0 --audio-format mp3"
 elif [ "$mode" = "3" ] || [ "$mode" = "wav" ]; then
-        output=wav
+        OPTION="--extract-audio --audio-format wav"
 elif [ "$mode" = "4" ] || [ "$mode" = "wavhq" ]; then
-        output=wavhq
+        OPTION="--extract-audio --audio-quality 0 --audio-format wav"
 elif [ "$mode" = "5" ] || [ "$mode" = "mp4" ]; then
-        output=mp4
+        OPTION="-f mp4"
 elif [ "$mode" = "6" ] || [ "$mode" = "mp4hq" ]; then
-        output=mp4hq
+        OPTION="-f bestvideo[ext=mp4]+bestaudio[ext=m4a]"
 elif [ "$mode" = "7" ] || [ "$mode" = "bestaudio" ]; then
-        output=bestaudio
+        OPTION="-f bestaudio"
 elif [ "$mode" = "9" ] || [ "$mode" = "costum" ]; then
-        read -p "Please type your Option: " output
+        read -p "Please type your Option: " OPTION
 else
 	echo "Invalid input"
 	exit 1
 fi
 
+# short title
+if $SHORT_TITLE; then
+  OPTION="$OPTION -o \"%(title)s.%(ext)s\""
+fi
+
+# no-cache
+if $NO_CACHE; then
+  OPTION="$OPTION --no-cache-dir"
+fi
+
 # execute yt-docker
-docker run --rm -d --read-only -u $UID:$EUID -v $dlDIR:/target -e URL="$url" -e OUTPUT="$output" maxpatternman/youtube-dl:$branch
+echo "docker run --rm $INTERACTIVE --read-only -u $U_ID:$G_ID -v $DL_DIR:/target maxpatternman/youtube-dl:$branch $DEBUG $OPTION $url"
 
 exit 0
