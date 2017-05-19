@@ -37,6 +37,5 @@ Please visit https://github.com/rg3/youtube-dl/blob/master/README.md#options for
         --rm -d --read-only \
         -u $UID:$EUID \
         -v $HOME:/target \
-        -e OUTPUT="-x --audio-format opus" \
-        maxpatternman/youtube-dl https://www.youtube.com/watch?v=2Z4m4lnjxkY
+        maxpatternman/youtube-dl https://www.youtube.com/watch?v=2Z4m4lnjxkY -x --audio-format opus
 
