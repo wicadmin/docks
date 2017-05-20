@@ -1,0 +1,97 @@
+#!/bin/bash
+set -e
+
+#####CONFIG############################
+branch="latest"
+
+# change your destination folder here
+DL_DIR=$HOME
+
+DEBUG=false
+
+# set the ID-number not the name
+# look in /etc/passwd if you aren't sure
+U_ID=$UID
+G_ID=$EUID
+
+# aditional settings
+NO_CACHE=true
+SHORT_TITLE=true
+READ_ONLY=true
+#######################################
+
+# Init
+showmodes="\n1) mp3 \n2) mp3HQ\n3) wav\n4) wavHQ\n5) mp4\n6) mp4HQ\n7) bestaudio\n\n9) costum\n"
+
+# verbose for debugging
+if $DEBUG; then
+  DEBUG="-v"
+  INTERACTIVE="-ti"
+else
+  DEBUG="-q"
+  INTERACTIVE="-d"
+fi
+
+# read-only
+if $READ_ONLY; then
+  READ_ONLY="--read-only"
+else
+  READ_ONLY=""
+fi
+
+# want two arguments to run
+if [ -n "$1" ] && [ -n "$2" ]; then
+	echo "URL=$1"
+	echo "MODE=$2"
+	url=$1
+	mode=$2
+elif [ -n "$1" ]; then
+	echo "URL=$1"
+	url=$1
+	echo -e $showmodes
+	read -p "Mode number: " mode
+else
+	read -p "Please pase URL: " url
+	echo -e $showmodes
+	read -p "Mode number: " mode
+fi
+
+# case insensitive
+mode="$(echo $mode | tr '[:upper:]' '[:lower:]')"
+
+# set mode
+if [ "$mode" = "1" ] || [ "$mode" = "mp3" ]; then
+	OPTION="--extract-audio --audio-format mp3"
+elif [ "$mode" = "2" ] || [ "$mode" = "mp3hq" ]; then
+	OPTION="--extract-audio --audio-quality 0 --audio-format mp3"
+elif [ "$mode" = "3" ] || [ "$mode" = "wav" ]; then
+        OPTION="--extract-audio --audio-format wav"
+elif [ "$mode" = "4" ] || [ "$mode" = "wavhq" ]; then
+        OPTION="--extract-audio --audio-quality 0 --audio-format wav"
+elif [ "$mode" = "5" ] || [ "$mode" = "mp4" ]; then
+        OPTION="-f mp4"
+elif [ "$mode" = "6" ] || [ "$mode" = "mp4hq" ]; then
+        OPTION="-f bestvideo[ext=mp4]+bestaudio[ext=m4a]"
+elif [ "$mode" = "7" ] || [ "$mode" = "bestaudio" ]; then
+        OPTION="-f bestaudio"
+elif [ "$mode" = "9" ] || [ "$mode" = "costum" ]; then
+        read -p "Please type your Option: " OPTION
+else
+	echo "Invalid input"
+	exit 1
+fi
+
+# short title
+if $SHORT_TITLE; then
+  OPTION="$OPTION -o \"%(title)s.%(ext)s\""
+fi
+
+# no-cache
+if $NO_CACHE; then
+  OPTION="$OPTION --no-cache-dir"
+fi
+
+# execute yt-docker
+docker run --rm $INTERACTIVE $READ_ONLY -u $U_ID:$G_ID -v $DL_DIR:/target maxpatternman/youtube-dl:$branch $DEBUG $OPTION $url
+
+exit 0
