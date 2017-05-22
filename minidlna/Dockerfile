@@ -1,7 +1,7 @@
 FROM alpine:3.5
 
 RUN apk add --no-cache minidlna \
-&&  mkdir /all /music /video /picture
+&&  mkdir /shares /music /videos /pictures
 
 COPY minidlna.conf /etc/minidlna.conf
 
