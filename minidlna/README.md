@@ -3,6 +3,8 @@
 **Minidlna-Server** in a docker-container based on the lightweight **Alpine Linux**.
 I added a unit file for systemd to run minidlna as a service.
 
+https://github.com/maxpatternman/docks/blob/master/minidlna/minidlna-docker.service
+
 ### Usage
 
 docker run \
