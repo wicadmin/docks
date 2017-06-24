@@ -1,4 +1,4 @@
 #!/bin/sh
 
-docker run --rm -ti maxpatternman/pwgen $@
+docker run --rm -ti --network="none" maxpatternman/pwgen $@
 
