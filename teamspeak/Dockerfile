@@ -15,8 +15,8 @@ RUN apk --no-cache add \
 &&  mv /opt/teamspeak3* $DIR \
 &&  rm teamspeak3.tar.bz2 \
 
-&&  addgroup -g 503 $USER \
-&&  adduser -D -S -h $DIR -u 503 -G $USER $USER \
+&&  addgroup -g 10001 $USER \
+&&  adduser -D -S -h $DIR -u 10001 -G $USER $USER \
 &&  chown -R $USER:$USER $DIR \
 
 &&  apk del wget \
