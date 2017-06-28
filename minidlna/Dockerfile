@@ -5,8 +5,6 @@ RUN apk add --no-cache minidlna \
 
 COPY minidlna.conf /etc/minidlna.conf
 
-VOLUME ["/shares","/music","/videos","/pictures"]
-
 LABEL maintainer="maor@outlook.de"
 
 ENTRYPOINT ["/usr/sbin/minidlnad","-d"]
