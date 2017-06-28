@@ -19,4 +19,4 @@ e.g.:
 
 `docker volume create ts-data`
 
-`docker run -d --rm --restart="always" --name teamspeak -v ts-data:/opt/teamspeak3 -p 10011:10011 -p 30033:30033 -p 9987:9987/udp maxpatternman/teamspeak`
+`docker run -d --rm --name teamspeak -v ts-data:/opt/teamspeak3 -p 10011:10011 -p 30033:30033 -p 9987:9987/udp maxpatternman/teamspeak`
