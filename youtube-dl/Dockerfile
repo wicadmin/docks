@@ -12,13 +12,12 @@ RUN apk add --no-cache ca-certificates \
 
     # download youtube-dl
     && wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl \
-    && chmod a+rx /usr/local/bin/youtube-dl
+    && chmod a+rx /usr/local/bin/youtube-dl \
+    && apk del wget
 
 WORKDIR /target
-VOLUME /target
 LABEL maintainer="maor@outlook.de"
 
 ENTRYPOINT ["/usr/local/bin/youtube-dl"]
 CMD ["--help"]
-
 
