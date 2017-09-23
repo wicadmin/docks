@@ -2,7 +2,7 @@ FROM alpine:3.6
 
 ENV TZ='Europe/Berlin'
 
-COPY startscript /bin/startscript
+COPY startscript /usr/local/bin/startscript
 
 RUN apk --no-cache add \
   openssh \
@@ -11,7 +11,7 @@ RUN apk --no-cache add \
   && ssh-keygen -A \
   && rm -f /etc/motd \
 
-  && chmod +x /bin/startscript
+  && chmod 744 /usr/local/bin/startscript
 
 EXPOSE 22
 

@@ -13,7 +13,7 @@
 ##### Oneliner
 `docker run -d --name sshd -p 22:22 maxpatternman/sshd`
 
-##### Important renew the keys
+##### !Important! renew the keys
 `docker exec sshd startscript`
 
 ##### Add a new user
@@ -21,5 +21,7 @@
 
 #### Env
 Use the TZ variable to change the timezone.
-You need to run the startscript ones
+check out the [wiki](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+e.g. `-e TZ='America/Chicago'`
+You must run the startup script once for the changes to take effect.
 `docker exec sshd startscript`
