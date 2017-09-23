@@ -14,7 +14,7 @@
 `docker run -d --name sshd -p 22:22 maxpatternman/sshd`
 
 ##### Add a new user
-`docker exec sshd adduser [USERNAME]`
+`docker exec -ti sshd adduser [USERNAME]`
 
 #### Env
 Use the TZ variable to change the timezone.
