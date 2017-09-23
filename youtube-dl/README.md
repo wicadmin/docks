@@ -17,8 +17,8 @@ Please visit https://github.com/rg3/youtube-dl/blob/master/README.md#options for
 
 #### Startscript
 
-Feel free to use my startscript. \
-It requires bash to run. \
+Feel free to use my startscript.
+It requires bash to run.
 https://github.com/maxpatternman/docks/blob/master/youtube-dl/youtube-dl-docker
 
 #### Examples:
@@ -43,4 +43,3 @@ https://github.com/maxpatternman/docks/blob/master/youtube-dl/youtube-dl-docker
         -u $UID:$EUID \
         -v $HOME:/target \
         maxpatternman/youtube-dl https://www.youtube.com/watch?v=2Z4m4lnjxkY -x --audio-format opus
-
