@@ -20,8 +20,10 @@
 `docker exec -ti sshd adduser [USERNAME]`
 
 #### Env
+
+##### Timezone
 Use the TZ variable to change the timezone.
-check out the [wiki](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+Check out the [wiki](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 e.g. `-e TZ='America/Chicago'`
 You must run the startup script once for the changes to take effect.
 `docker exec sshd startscript`
