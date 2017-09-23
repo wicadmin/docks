@@ -16,7 +16,7 @@ RUN apk add --no-cache ca-certificates \
     && apk del wget
 
 WORKDIR /target
-LABEL maintainer="maor@outlook.de"
+LABEL maintainer="Max Patternman (https://github.com/maxpatternman)"
 
 ENTRYPOINT ["/usr/local/bin/youtube-dl"]
 CMD ["--help"]
