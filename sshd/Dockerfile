@@ -7,7 +7,6 @@ COPY startscript /usr/local/bin/startscript
 RUN apk --no-cache add \
                    openssh \
                    tzdata \
-	  && sed -i 's/^#PermitRootLogin.*/PermitRootLogin\ yes/' /etc/ssh/sshd_config \
     && ssh-keygen -A \
     && rm -f /etc/motd \
     && chmod 744 /usr/local/bin/startscript
