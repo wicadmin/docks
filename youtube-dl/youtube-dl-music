@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+docker run --rm -d --read-only -u $UID:$EUID \
+-v $(xdg-user-dir MUSIC):/target maxpatternman/youtube-dl \
+-q -x --audio-quality 0 --audio-format mp3 \
+-o "%(title)s.%(ext)s" \
+--no-cache-dir $1
