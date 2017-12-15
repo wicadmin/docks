@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 # install dependencies
 RUN apk add --no-cache ca-certificates \
