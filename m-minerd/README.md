@@ -2,7 +2,7 @@
 
 **m-minerd** in a docker-container based on Ubuntu.
 
-And use the code of:
+From:
 https://github.com/magi-project/m-cpuminer-v2
 
 #### Usage:
@@ -11,8 +11,10 @@ https://github.com/magi-project/m-cpuminer-v2
            --rm \
            -d \
            --name m-minerd \
-           maxpatternman/m-minerd -o URL -u USERNAME -p PASSWORD -e CPU_EFFICIENCY
+           maxpatternman/m-minerd -o URL -u USERNAME -p PASSWORD -t THREAD_NUMBERS -e CPU_EFFICIENCY
+
+THREAD_NUMBERS and CPU_EFFICIENCY are optional.
 
 ##### Oneliner
-`docker run --rm -d --name m-minerd maxpatternman/youtube-dl -o URL -u USERNAME -p PASSWORD -e CPU_EFFICIENCY`
+`docker run --rm -d --name m-minerd maxpatternman/m-minerd -o URL -u USERNAME -p PASSWORD -t THREAD_NUMBERS -e CPU_EFFICIENCY`
 
