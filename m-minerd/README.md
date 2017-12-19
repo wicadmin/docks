@@ -24,14 +24,15 @@ URL: https://github.com/maxpatternman/docks/blob/master/m-minerd/m-minerd.servic
 
 ##### Installation
 
-`sudo wget -O /etc/systemd/system/m-minerd.service https://raw.githubusercontent.com/maxpatternman/docks/master/m-minerd/m-minerd.service`
-
+1. Download the Unit File  
+`sudo wget -O /etc/systemd/system/m-minerd.service https://raw.githubusercontent.com/maxpatternman/docks/master/m-minerd/m-minerd.service`  
+or  
 `sudo curl https://raw.githubusercontent.com/maxpatternman/docks/master/m-minerd/m-minerd.service -o /etc/systemd/system/m-minerd.service`
 
-And then open /etc/systemd/system/m-minerd.service and change the parameters like above.
-
-e.g. `nano /etc/systemd/system/m-minerd.service`
-or `vi /etc/systemd/system/m-minerd.service`
+2. Open /etc/systemd/system/m-minerd.service and change the parameters like above.  
+`sudo nano /etc/systemd/system/m-minerd.service`  
+or  
+`sudo vi /etc/systemd/system/m-minerd.service`
 
 ##### Enable & Start
 
