@@ -1,0 +1,13 @@
+[Unit]
+Description=Coin MAGI CPU miner
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run --rm --name m-minerd maxpatternman/youtube-dl -o URL -u USERNAME -p PASSWORD -e CPU_EFFICIENCY
+ExecStop=/usr/bin/docker stop -t 2 minerd
+
+[Install]
+WantedBy=multi-user.target
+
