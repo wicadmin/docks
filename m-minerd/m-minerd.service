@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 Restart=always
 ExecStart=/usr/bin/docker run --rm --name m-minerd maxpatternman/m-minerd -o URL -u USERNAME -p PASSWORD -t THREAD_NUMBERS -e CPU_EFFICIENCY
-ExecStop=/usr/bin/docker stop -t 2 minerd
+ExecStop=/usr/bin/docker stop -t 2 m-minerd
 
 [Install]
 WantedBy=multi-user.target
