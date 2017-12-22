@@ -1,0 +1,13 @@
+[Unit]
+Description=CPU miner
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run --rm --name cpuminer-opt maxpatternman/cpuminer-opt -o URL -u USERNAME -p PASSWORD -t THREAD_NUMBERS -e CPU_EFFICIENCY
+ExecStop=/usr/bin/docker stop -t 2 cpuminer-opt
+
+[Install]
+WantedBy=multi-user.target
+
