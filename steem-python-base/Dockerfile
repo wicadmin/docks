@@ -8,7 +8,5 @@ RUN git clone https://github.com/steemit/steem-python.git \
     && pip install pipenv \
     && pip install .
 
-WORKDIR /steem-python
-
 LABEL maintainer="Max Patternman (https://github.com/maxpatternman)" \
       source="https://github.com/steemit/steem-python"
