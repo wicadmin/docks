@@ -6,7 +6,6 @@ RUN apk add --no-cache openssl-dev \
                        git\
     && git clone https://github.com/steemit/steem-python.git \
     && cd steem-python \
-    && sed -i 's/future_bytes/bytes/g' steembase/storage.py \
     && python setup.py install \
     && apk del build-base \
                git
