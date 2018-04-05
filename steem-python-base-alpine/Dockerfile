@@ -8,6 +8,7 @@ RUN apk add --no-cache openssl-dev \
     && git clone https://github.com/steemit/steem-python.git \
     && cd steem-python \
     && python setup.py install \
+    && rm -r /steem-python \
     && apk del build-base \
                git
 
