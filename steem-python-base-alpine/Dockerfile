@@ -4,7 +4,6 @@ FROM python:3-alpine3.7
 RUN apk add --no-cache openssl-dev \
                        build-base \
                        git \
-                       nodejs=8.9.3-r1 \
     && git clone https://github.com/steemit/steem-python.git \
     && cd steem-python \
     && python setup.py install \
